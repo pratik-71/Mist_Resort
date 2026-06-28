@@ -56,54 +56,56 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </button>
             
             <h3>Book Your Paradise</h3>
-            <p>Send us your details and all to confirm your booking instantly via WhatsApp!</p>
 
             <form className="booking-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Full Name</label>
                 <input 
                   type="text" 
                   id="name" 
-                  placeholder="John Doe"
+                  placeholder=" "
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required 
                 />
+                <label htmlFor="name">Full Name</label>
               </div>
 
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="check-in">Check-in</label>
                   <input 
                     type="date" 
                     id="check-in"
+                    placeholder=" "
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
                     required 
                   />
+                  <label htmlFor="check-in">Check-in</label>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="check-out">Check-out</label>
                   <input 
                     type="date" 
                     id="check-out"
+                    placeholder=" "
                     value={checkOut}
                     onChange={(e) => setCheckOut(e.target.value)}
                     required 
                   />
+                  <label htmlFor="check-out">Check-out</label>
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="guests">Number of Guests</label>
                 <input 
                   type="number"
                   id="guests"
+                  placeholder=" "
                   min="1"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
                   required
                 />
+                <label htmlFor="guests">Number of Guests</label>
               </div>
 
               <button type="submit" className="btn-submit-booking">

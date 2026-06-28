@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import Lenis from 'lenis';
 import Gallery from './Gallery';
 import Amenities from './Amenities';
 import Footer from './Footer';
@@ -9,6 +10,54 @@ import './App.css';
 
 function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Initialize smooth scrolling and scroll listener
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      lenis.destroy();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Staggered text variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 1, ease: [0.2, 0.65, 0.3, 0.9] }
+    }
+  };
 
   return (
     <main className="app-container">
@@ -29,7 +78,7 @@ function App() {
       {/* Hero Content */}
       <section className="hero-section">
         {/* Sleek Edge-to-Edge Navbar */}
-        <nav className="navbar">
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
           <h2 className="logo">MIST RESORT</h2>
           <div className="nav-links">
             <a href="#villas">Villas</a>
@@ -45,13 +94,24 @@ function App() {
         {/* Minimalist Centered Hero */}
         <div className="hero-content">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <p className="hero-subtitle">WELCOME TO YOUR SANCTUARY</p>
-            <h1 className="hero-title">Escape to Serenity.</h1>
+            <motion.p variants={itemVariants} className="hero-subtitle">
+              Welcome to your sanctuary
+            </motion.p>
+            <h1 className="hero-title">
+              {['Escape', 'to', 'Serenity.'].map((word, i) => (
+                <span key={i} className="word-wrapper">
+                  <motion.span variants={itemVariants} style={{ display: 'inline-block', marginRight: '0.3em' }}>
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
           </motion.div>
+
 
         </div>
       </section>

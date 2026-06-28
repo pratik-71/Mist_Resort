@@ -83,6 +83,19 @@
   align-items: center;
   padding: 2rem 5%;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: padding 0.5s ease, background 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.navbar.scrolled {
+  padding: 1rem 5%;
+  background: rgba(10, 15, 13, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -162,6 +175,47 @@
   color: #fff;
   margin-bottom: 3rem;
   text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.scroll-text {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(196, 167, 125, 1) 0%, rgba(196, 167, 125, 0) 100%);
+  animation: scroll-line-anim 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  transform-origin: top center;
+}
+
+@keyframes scroll-line-anim {
+  0% { transform: scaleY(0); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0); transform-origin: bottom center; }
 }
 
 /* Luxury Floating Pill Action Bar */

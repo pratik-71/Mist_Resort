@@ -17,16 +17,18 @@
 
 /* Booking Modal Container */
 .booking-modal {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: rgba(10, 15, 13, 0.85); /* Deep slate forest */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  color: var(--color-text-light);
   width: calc(100vw - 2rem);
   max-width: 500px;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: clamp(1.5rem, calc(2vw + 1rem), 2.5rem);
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(196, 167, 125, 0.2);
 }
 
 .btn-modal-close {
@@ -35,7 +37,7 @@
   right: 1.5rem;
   background: transparent;
   border: none;
-  color: #666;
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -44,25 +46,26 @@
 }
 
 .btn-modal-close:hover {
-  color: #000;
+  color: #fff;
 }
 
 .booking-modal h3 {
   font-family: var(--font-serif);
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #111;
+  color: var(--color-accent);
 }
 
 .booking-modal p {
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
 }
 
-/* Form Styles */
+/* Form Styles (Floating Labels) */
 .booking-form {
   display: flex;
   flex-direction: column;
@@ -70,9 +73,9 @@
 }
 
 .form-group {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .form-row {
@@ -92,51 +95,75 @@
 }
 
 .form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #333;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.8rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 1.5rem 1rem 0.5rem; /* Space for floating label */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 1rem;
-  color: #000;
-  background-color: #f9f9f9;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.03);
   transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* For inputs that have a value or are focused, float the label */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:valid + label,
+.form-group label.active /* if applied manually */ {
+  top: 0.4rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-accent);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #000;
-  background-color: #fff;
+  border-color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Remove default date/number styling artifacts */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
 }
 
 .btn-submit-booking {
-  background: #000;
-  color: #fff;
+  background: var(--color-accent);
+  color: #000;
   border: none;
   padding: 1.2rem;
-  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  border-radius: 6px;
+  border-radius: 50px;
   cursor: pointer;
   margin-top: 1rem;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 20px rgba(196, 167, 125, 0.2);
 }
 
 .btn-submit-booking:hover {
-  background: #333;
-  transform: translateY(-2px);
+  background: #fff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2);
 }

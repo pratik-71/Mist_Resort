@@ -39,40 +39,57 @@
 }
 
 .amenity-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+  gap: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.amenity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, rgba(196, 167, 125, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .amenity-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(196, 167, 125, 0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px rgba(196, 167, 125, 0.1);
+}
+
+.amenity-card:hover::before {
+  opacity: 1;
 }
 
 .amenity-icon {
-  margin-bottom: 1.5rem;
-  color: #fff;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  color: var(--color-accent);
+  transition: transform 0.4s ease;
 }
 
 .amenity-card:hover .amenity-icon {
-  opacity: 1;
+  transform: scale(1.1);
 }
 
 .amenity-card h4 {
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 500;
+  color: var(--color-text-light);
   letter-spacing: 1px;
-  color: #fff;
 }

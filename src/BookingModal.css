@@ -6,13 +6,11 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0;
 }
 
 /* Booking Modal Container */
@@ -20,13 +18,16 @@
   background-color: #0a0f0d; /* Deep slate forest */
 
   color: var(--color-text-light);
-  width: calc(100vw - 2rem);
-  max-width: 500px;
-  max-height: calc(100vh - 2rem);
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
   overflow-y: auto;
-  border-radius: 16px;
+  border-radius: 0;
   padding: clamp(1.5rem, calc(2vw + 1rem), 2.5rem);
   position: relative;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(196, 167, 125, 0.2);
 }
 
@@ -75,6 +76,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
 }
 
 .form-group {
@@ -162,7 +164,7 @@
   letter-spacing: 2px;
   border-radius: 50px;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: auto;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 10px 20px rgba(196, 167, 125, 0.2);
 }

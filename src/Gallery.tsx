@@ -17,6 +17,7 @@ const ALL_IMAGES = [
 
 export default function Gallery() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -73,11 +74,30 @@ export default function Gallery() {
             
             <div className="modal-grid">
               {ALL_IMAGES.map((src) => (
-                <div key={src} className="modal-item">
+                <div key={src} className="modal-item" onClick={() => setSelectedImage(src)}>
                   <img src={src} alt="Mist Resort gallery" loading="lazy" />
                 </div>
               ))}
             </div>
+
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            className="lightbox-overlay"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            onClick={() => setSelectedImage(null)}
+          >
+            <button className="btn-close-lightbox" onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}>
+              <X size={32} />
+            </button>
+            <img src={selectedImage} alt="Full screen" className="lightbox-image" onClick={(e) => e.stopPropagation()} />
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,0 +1,132 @@
+/* Booking Modal Overlay */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Booking Modal Container */
+.booking-modal {
+  background-color: #ffffff;
+  color: #000000;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.btn-modal-close:hover {
+  color: #000;
+}
+
+.booking-modal h3 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.booking-modal p {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #000;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #000;
+  background-color: #fff;
+}
+
+.btn-submit-booking {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit-booking:hover {
+  background: #333;
+  transform: translateY(-2px);
+}

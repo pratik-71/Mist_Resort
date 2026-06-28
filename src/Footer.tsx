@@ -38,7 +38,7 @@ export default function Footer({ onBookNowClick }: FooterProps) {
       <h2 className="footer-thank-you">Thank You</h2>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Mist Resort. All rights reserved.</p>
+       
       </div>
     </footer>
   );

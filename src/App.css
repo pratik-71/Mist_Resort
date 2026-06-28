@@ -30,13 +30,28 @@
   height: 100%;
   object-fit: cover;
   animation: cinematic-zoom 20s ease-in-out infinite;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    animation: cinematic-zoom-mobile 12s ease-in-out infinite;
+  }
 }
 
 @keyframes cinematic-zoom {
-  0% { transform: scale(1.05); }
-  15% { transform: scale(1); }
-  85% { transform: scale(1.15); }
-  100% { transform: scale(1.05); }
+  0% { transform: scale(1.05) translateZ(0); }
+  15% { transform: scale(1) translateZ(0); }
+  85% { transform: scale(1.15) translateZ(0); }
+  100% { transform: scale(1.05) translateZ(0); }
+}
+
+@keyframes cinematic-zoom-mobile {
+  0% { transform: scale(1.1) translateZ(0); }
+  15% { transform: scale(1) translateZ(0); }
+  85% { transform: scale(1.25) translateZ(0); }
+  100% { transform: scale(1.1) translateZ(0); }
 }
 
 /* A sophisticated vignette overlay */

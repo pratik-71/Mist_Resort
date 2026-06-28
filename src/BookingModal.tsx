@@ -55,8 +55,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <X size={24} />
             </button>
             
-            <h3>Reserve Your Stay</h3>
-            <p>Send us your details and we will confirm your booking instantly via WhatsApp.</p>
+            <h3>Book Your Paradise</h3>
+            <p>Send us your details and all to confirm your booking instantly via WhatsApp!</p>
 
             <form className="booking-form" onSubmit={handleSubmit}>
               <div className="form-group">
@@ -96,18 +96,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
               <div className="form-group">
                 <label htmlFor="guests">Number of Guests</label>
-                <select 
+                <input 
+                  type="number"
                   id="guests"
+                  min="1"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
                   required
-                >
-                  <option value="1">1 Guest</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5+">5+ Guests</option>
-                </select>
+                />
               </div>
 
               <button type="submit" className="btn-submit-booking">

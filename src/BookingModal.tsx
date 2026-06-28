@@ -51,11 +51,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
           >
-            <button className="btn-modal-close" onClick={onClose}>
-              <X size={24} />
-            </button>
-            
-            <h3>Book Your Paradise</h3>
+            <div className="modal-header">
+              <h3>Book Your Paradise</h3>
+              <button className="btn-modal-close" onClick={onClose}>
+                <X size={24} />
+              </button>
+            </div>
 
             <form className="booking-form" onSubmit={handleSubmit}>
               <div className="form-group">

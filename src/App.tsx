@@ -102,7 +102,7 @@ function App() {
               Welcome to your sanctuary
             </motion.p>
             <h1 className="hero-title">
-              {['Escape', 'to', 'Serenity.'].map((word, i) => (
+              {['Escape', 'to', 'Paradise.'].map((word, i) => (
                 <span key={i} className="word-wrapper">
                   <motion.span variants={itemVariants} style={{ display: 'inline-block', marginRight: '0.3em' }}>
                     {word}

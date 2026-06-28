@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import Lenis from 'lenis';
 import Gallery from './Gallery';
 import Amenities from './Amenities';

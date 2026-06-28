@@ -15,8 +15,6 @@ const ALL_IMAGES = [
   '/image 11.jpeg'
 ];
 
-const PREVIEW_IMAGES = ALL_IMAGES.slice(0, 5);
-
 export default function Gallery() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

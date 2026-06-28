@@ -36,18 +36,27 @@ export default function Gallery() {
         <h2>A Glimpse of Paradise</h2>
         <p>Discover the beauty that awaits</p>
 
-        <div className="preview-grid">
-          {PREVIEW_IMAGES.map((src, index) => (
-            <div key={src} className={`preview-item ${index === 0 ? 'large' : ''}`}>
-              <img src={src} alt="Mist Resort preview" loading="lazy" />
-            </div>
-          ))}
-          
-          <div className="more-overlay">
-            <button className="btn-more" onClick={() => setIsModalOpen(true)}>
-              View Gallery
-            </button>
+        <div className="preview-marquee-container">
+          <div className="preview-marquee-track">
+            {/* First Set */}
+            {ALL_IMAGES.map((src) => (
+              <div key={`set1-${src}`} className="preview-item">
+                <img src={src} alt="Mist Resort preview" loading="lazy" />
+              </div>
+            ))}
+            {/* Second Set for seamless infinite loop */}
+            {ALL_IMAGES.map((src) => (
+              <div key={`set2-${src}`} className="preview-item">
+                <img src={src} alt="Mist Resort preview" loading="lazy" />
+              </div>
+            ))}
           </div>
+        </div>
+
+        <div className="btn-more-container">
+          <button className="btn-more" onClick={() => setIsModalOpen(true)}>
+            View Gallery
+          </button>
         </div>
       </section>
 

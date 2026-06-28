@@ -12,16 +12,18 @@
 
 .footer-links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 1.2rem;
   margin-bottom: 5rem;
 }
 
 .footer-btn {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: center;
+  gap: 1rem;
   background: transparent;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.2);

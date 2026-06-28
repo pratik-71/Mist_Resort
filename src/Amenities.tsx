@@ -1,4 +1,5 @@
 import { Utensils, Wind, Waves, Car, Gamepad2, Tent, Mountain, Leaf } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Amenities.css';
 
 const amenitiesData = [
@@ -44,12 +45,19 @@ export default function Amenities() {
       
       <div className="amenities-grid">
         {amenitiesData.map((item, index) => (
-          <div key={index} className="amenity-card">
+          <motion.div 
+            key={index} 
+            className="amenity-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+          >
             <div className="amenity-icon">
               {item.icon}
             </div>
             <h4>{item.title}</h4>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

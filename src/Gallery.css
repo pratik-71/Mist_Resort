@@ -167,8 +167,8 @@
 
 @media (max-width: 768px) {
   .modal-grid {
-    column-count: 3;
-    column-gap: 2px;
+    column-count: 2;
+    column-gap: 4px;
   }
 }
 

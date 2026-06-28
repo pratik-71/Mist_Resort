@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants, AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import Gallery from './Gallery';
 import Amenities from './Amenities';
@@ -11,6 +11,14 @@ import './App.css';
 function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Initialize smooth scrolling and scroll listener
   useEffect(() => {
@@ -61,6 +69,33 @@ function App() {
 
   return (
     <main className="app-container">
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            className="intro-screen"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <motion.div
+              className="intro-logo"
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{ 
+                scale: [1, 1.2, 60], 
+                opacity: [0, 1, 1, 0] 
+              }}
+              transition={{ 
+                duration: 3.5, 
+                times: [0, 0.2, 0.8, 1],
+                ease: [0.8, 0, 0.2, 1] 
+              }}
+            >
+              MIST RESORT
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="hero-wrapper">
         {/* Background Image */}
       <div className="hero-background">

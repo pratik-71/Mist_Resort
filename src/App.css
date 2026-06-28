@@ -36,7 +36,7 @@
 
 @media (max-width: 768px) {
   .hero-image {
-    animation: cinematic-zoom-mobile 15s ease-in-out infinite alternate;
+    animation: cinematic-zoom-mobile 8s ease-in-out infinite alternate;
   }
 }
 
@@ -284,4 +284,28 @@
   .logo {
     font-size: 1.4rem;
   }
+}
+
+/* Intro Screen */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro-logo {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #fff;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
 }
